@@ -22,11 +22,11 @@ public class MyApplication {
                         )
                 )
         );
-        Node node2 = new Node(1,
-                new Node(2,
-                        new Node(3,
-                                new Node(4,
-                                        new Node(5, null)
+        Node node2 = new Node(3,
+                new Node(4,
+                        new Node(2,
+                                new Node(8,
+                                        new Node(1, null)
                                 )
                         )
                 )
