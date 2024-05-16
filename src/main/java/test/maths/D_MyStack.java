@@ -1,6 +1,6 @@
 package test.maths;
 
-public class MyStack {
+public class D_MyStack {
 
     public static void main(String[] args) {
 

@@ -1,7 +1,7 @@
 package test.maths;
 
 @SuppressWarnings("all")
-public class ReversalNode {
+public class A_ReversalNode {
 
     public static void main(String[] args) {
         Node node = new Node(

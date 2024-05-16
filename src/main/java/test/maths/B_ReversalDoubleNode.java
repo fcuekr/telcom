@@ -2,7 +2,7 @@ package test.maths;
 
 import lombok.AllArgsConstructor;
 
-public class ReversalDoubleNode {
+public class B_ReversalDoubleNode {
 
     public static void main(String[] args) {
         Node node3 = new Node(3, null, null);
