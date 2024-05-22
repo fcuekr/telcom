@@ -115,7 +115,7 @@ public class A_ReversalNode {
         }
     }
 
-    private static void print(Node node){
+    public static void print(Node node){
         if (node!=null){
             System.out.println(node.value);
             print(node.next);
