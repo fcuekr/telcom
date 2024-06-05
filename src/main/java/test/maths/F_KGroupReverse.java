@@ -26,9 +26,9 @@ public class F_KGroupReverse {
                 ), 1
         );
 
-        Node node3 = new Node(null, 1);
+        Node node3 = new Node(new Node(null,2), 1);
 
-        Node node1 = new F_KGroupReverse().reverseNodeListWithKGroup(node3, 3);
+        Node node1 = new F_KGroupReverse().reverseNodeListWithKGroup3(node, 3);
         System.out.println(node1);
         print(node1);
     }
@@ -121,6 +121,27 @@ public class F_KGroupReverse {
         return resultNode;
     }
 
+
+    public Node reverseNodeListWithKGroup3(Node node,int k){
+        Node last = null;
+        Node start = node;
+        Node end =null;
+        Node head =getNextKNode(start,k);
+        while (start!=null){
+            end = getNextKNode(start,k);
+            if (end==null){
+                break;
+            }
+            reverseNode2(start,end);
+            if (last!=null){
+                last.next = end;
+            }
+            last = start;
+            start = last.next;
+        }
+        return head==null?node:head;
+    }
+
     public void reverseNode(Node start,Node end){
         end=end.next;
         Node pre = null;
@@ -132,6 +153,20 @@ public class F_KGroupReverse {
             cur=next;
         }
         start.next=end;
+    }
+
+    public void reverseNode2(Node start,Node end){
+        end=end.next;
+        Node cur = start;
+        Node pre = null;
+        Node next = null;
+        while (cur!=end){
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        start.next = end;
     }
 
 

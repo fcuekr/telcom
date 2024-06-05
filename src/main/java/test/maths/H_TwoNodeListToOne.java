@@ -3,7 +3,6 @@ package test.maths;
 import lombok.AllArgsConstructor;
 
 import java.util.Arrays;
-import java.util.Random;
 
 @SuppressWarnings("all")
 public class H_TwoNodeListToOne {

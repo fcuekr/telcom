@@ -17,7 +17,7 @@ public class B_ReversalDoubleNode {
         node4.next=node5;
         print(head);
 
-        Node node = reversalDoubleNode2(head);
+        Node node = reversalDoubleNode3(head);
         print(node);
     }
 
@@ -46,6 +46,18 @@ public class B_ReversalDoubleNode {
             head.next = pre;
             pre = head;
             head=next;
+        }
+        return pre;
+    }
+
+    private static Node reversalDoubleNode3(Node head){
+        Node pre = null;
+        while (head!=null){
+            Node next= head.next;
+            head.last = next;
+            head.next = pre;
+            pre = head;
+            head = next;
         }
         return pre;
     }

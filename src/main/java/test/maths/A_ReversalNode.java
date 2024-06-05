@@ -15,7 +15,7 @@ public class A_ReversalNode {
                 ), 1
         );
         print(node);
-        Node reversalNode = reversalNode8(node);
+        Node reversalNode = reversalNode10(node);
         print(reversalNode);
     }
 
@@ -103,6 +103,27 @@ public class A_ReversalNode {
             head = nextNode;
         }
         return resultNode;
+    }
+
+    private static Node reversalNode9(Node head) {
+        if (head==null||head.next==null){
+            return head;
+        }
+        Node resultNode = reversalNode9(head.next);
+        head.next.next = head;
+        head.next = null;
+        return resultNode;
+    }
+
+    private static Node reversalNode10(Node head){
+        Node pre = null;
+        while (head!=null){
+            Node next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+        return pre;
     }
 
      static class Node{

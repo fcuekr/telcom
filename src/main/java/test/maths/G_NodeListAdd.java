@@ -35,7 +35,7 @@ public class G_NodeListAdd {
             print(nodeSecond);
             System.out.println();
             System.out.println();
-            print(addTwoNodeList(nodeFirst,nodeSecond));
+            print(addTwoNodeList2(nodeFirst,nodeSecond));
             System.out.println();
             System.out.println("------------------------------------");
         }
@@ -70,6 +70,37 @@ public class G_NodeListAdd {
         }
         if (carry==1){
             last.next=new Node(null,1);
+        }
+        return head;
+    }
+
+
+    public static Node addTwoNodeList2(Node node1,Node node2){
+        if (node1==null||node2==null){
+            return node1==null?node2:node1;
+        }
+        Node shortNode = getNodeListLength(node1)<getNodeListLength(node2)?node1:node2;
+        Node longNode = getNodeListLength(node1)<getNodeListLength(node2)?node2:node1;
+        Node head = longNode;
+        Node last = null;
+        int carry = 0;
+        while (shortNode!=null){
+            int sum = (longNode.value+shortNode.value+carry)%10;
+            carry = (longNode.value+shortNode.value+carry)/10;
+            longNode.value = sum;
+            last = longNode;
+            shortNode = shortNode.next;
+            longNode = longNode.next;
+        }
+        while (longNode!=null){
+            int sum = (longNode.value+carry)%10;
+            carry = (longNode.value+carry)/10;
+            longNode.value = sum;
+            last = longNode;
+            longNode = longNode.next;
+        }
+        if (carry==1){
+            last.next = new Node(null,1);
         }
         return head;
     }
