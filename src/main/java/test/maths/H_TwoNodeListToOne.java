@@ -13,7 +13,7 @@ public class H_TwoNodeListToOne {
         Node node2 = arrToNode(randArr(10,10));
         print(node2);
         System.out.println("\n");
-        Node resultNode = toOneList(node1, node2);
+        Node resultNode = toOneList2(node1, node2);
         print(resultNode);
         System.out.println("\n------------------------------------");
     }
@@ -37,6 +37,38 @@ public class H_TwoNodeListToOne {
         }
         cur.next=nodeFirst==null?nodeSecond:nodeFirst;
         return resultNode.next;
+    }
+
+
+    public static Node toOneList2(Node nodeFirst,Node nodeSecond){
+        Node first;
+        if (nodeFirst==null||nodeSecond==null){
+            return nodeFirst==null?nodeSecond:nodeFirst;
+        }
+        if (nodeFirst.value<nodeSecond.value){
+            first=nodeFirst;
+            nodeFirst=nodeFirst.next;
+        }else{
+            first=nodeSecond;
+            nodeSecond=nodeSecond.next;
+        }
+        Node cur = first;
+        while (nodeFirst!=null&&nodeSecond!=null){
+            if (nodeFirst.value<nodeSecond.value){
+                cur.next = nodeFirst;
+                nodeFirst=nodeFirst.next;
+            }else{
+                cur.next=nodeSecond;
+                nodeSecond=nodeSecond.next;
+            }
+            cur=cur.next;
+        }
+        if (nodeFirst==null){
+            cur.next = nodeSecond;
+        }else{
+            cur.next = nodeFirst;
+        }
+        return first;
     }
 
     @AllArgsConstructor

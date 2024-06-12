@@ -1,0 +1,53 @@
+package test.maths;
+
+public class I_ComputerMath {
+    public static void main(String[] args) {
+        System.out.println(add(78, 25));
+        System.out.println(minus(78, 25));
+        System.out.println(multi(78, 25));
+        System.out.println(divide(78, 25));
+    }
+
+    //a+b 等于a和b的异或 加上 a和b的与然后向左移1位
+    public static int add(int arg1,int arg2){
+        if (arg2==0){
+            return arg1;
+        }
+        return add(arg1^arg2,(arg1&arg2)<<1);
+    }
+
+    //a-b 等于a+(-b)
+    public static int minus(int arg1,int arg2){
+        arg2=negative(arg2);
+        return add(arg1,arg2);
+    }
+
+    //a*b 等于 a*b的每一位 1101*111 = 1101<<2*1+1101<<1*1+1101<<0*1 = 1101<<2+1101<<1+1101
+    public static int multi(int arg1,int arg2){
+        int sum=0;
+        while (arg2>0){
+            if ((arg2&1)==1){
+                sum = add(sum,arg1);
+            }
+            arg2=arg2>>>1;
+            arg1=arg1<<1;
+        }
+        return sum;
+    }
+
+    //a/b 等于 a不断左移，直到刚好大于b，a等于减去b右移 a的左移位，然后结果加上a的左移i个位的数再+1，直到被除数小于除数
+    public static int divide(int arg1,int arg2) {
+        int result = 0;
+        for (int i = 30; i >=0; i = minus(i,1)) {
+            if ((arg1>>i)>=arg2){
+                arg1=arg1-(arg2<<i);
+                result = result+(1<<i);
+            }
+        }
+        return result;
+    }
+
+        public static int negative(int arg){
+        return ~arg+1;
+    }
+}

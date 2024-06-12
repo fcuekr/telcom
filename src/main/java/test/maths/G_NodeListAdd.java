@@ -1,7 +1,6 @@
 package test.maths;
 
 import lombok.AllArgsConstructor;
-import lombok.ToString;
 
 import java.util.Random;
 
